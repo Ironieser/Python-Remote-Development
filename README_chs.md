@@ -1,6 +1,6 @@
 # Python 远程开发
 介绍如何在windows系统上配置python的远程开发，IDE为pycharm，或者使用vscode作为编辑器。
-[[中文版](https://github.com/Ironieser/Python-Remote-Development/edit/main/README_chs.md)][[英文版](https://github.com/Ironieser/Python-Remote-Development/edit/main/README.md)]
+[[中文版](https://github.com/Ironieser/Python-Remote-Development/blob/main/README_chs.md)][[英文版](https://github.com/Ironieser/Python-Remote-Development/blob/main/README.md)]
 # 环境
 ## Platform
   - Windows 10/11
