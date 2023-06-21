@@ -1,6 +1,6 @@
 # Python-Remote-Development
 The introduction for configuring the remote development with Pycharm or VSCode. 
-[[中文版](https://github.com/Ironieser/Python-Remote-Development/edit/main/README_chs.md)][[英文版](https://github.com/Ironieser/Python-Remote-Development/edit/main/README.md)]
+[[中文版](https://github.com/Ironieser/Python-Remote-Development/main/README_chs.md)][[英文版](https://github.com/Ironieser/Python-Remote-Development/main/README.md)]
 # Environment
 ## Platform
   - Windows 10/11
