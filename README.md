@@ -68,4 +68,8 @@ The introduction for configuring the remote development with Pycharm or VSCode.
     - Add ssh in pycharm  
       ```host IP: 127.0.0.1, port: 6001, name: root <container user name>```  
     - Now, we can connect the computer host or container from WAN.
-      
+
+# TensensorBoard / Jupyter / webui
+```
+ssh -N -f -L <local_host port>:<login_host>:<computer_port> -p <login_host port> name@<login_host> -o TCPKeepAlive=yes
+```
