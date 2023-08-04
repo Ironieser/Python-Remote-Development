@@ -62,7 +62,7 @@ The introduction for configuring the remote development with Pycharm or VSCode.
       
     - Open ssh forwarding in the local host(WAN)
       ```
-      ssh -N -f -L <local_host port>:<computer_host>:<container port> -p <computer_host port> name@<computer_host> -o TCPKeepAlive=yes
+      ssh -N -f -L <local_host port>:<docker_host>:<container port> -p <computer_host port> name@<computer_host> -o TCPKeepAlive=yes
       ssh -N -f -L 6001:192.168.4.129:12555 -p 22 ironieser@192.168.4.129
       ```
     - Add ssh in pycharm  
@@ -71,7 +71,7 @@ The introduction for configuring the remote development with Pycharm or VSCode.
 
 # TensensorBoard / Jupyter / webui
 ```
-ssh -N -f -L <local_host port>:<login_host>:<computer_port> -p <login_host port> name@<login_host> -o TCPKeepAlive=yes
+ssh -N -f -L <local_host port>:<computer_host>:<computer_port> -p <login_host port> name@<login_host> -o TCPKeepAlive=yes
 ```
 If the firewall banned all port but 22, you could use ```ssh -L```
 ```
