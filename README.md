@@ -73,7 +73,7 @@ The introduction for configuring the remote development with Pycharm or VSCode.
 ```
 ssh -N -f -L <local_host port>:<computer_host>:<computer_port> -p <login_host port> name@<login_host> -o TCPKeepAlive=yes
 ```
-If the firewall banned all port but 22, you could use ```ssh -L```
+If the firewall banned all port but 22, you could use ```ssh -L``` at cmd/PowerShell of local host,
 ```
 ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
 ```
