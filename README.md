@@ -19,7 +19,8 @@ The introduction for configuring the remote development with Pycharm or VSCode.
     - Conda environment, python   
     - It cannot be connected by the user from the outside of the computer host (or LAN).
 # Analysis and Solution  
-  - First of all, please config ../.ssh/config. Suggest using the default fold to save id_rsa and id_ras.pub.  
+  - First of all, please config ../.ssh/config. Suggest using the default fold to save id_rsa and id_ras.pub.
+  - ```ssh-keygen -t rsa```
     ```
       C:\Users\account_name\.ssh
     
