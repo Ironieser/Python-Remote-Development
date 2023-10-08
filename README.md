@@ -50,7 +50,27 @@ The introduction for configuring the remote development with Pycharm or VSCode.
       - Need Port forwarding  
         - ``` ssh -J login0 gpu0```
         - ``` ssh -J login0 gpu0```
-       
+    - A bug:
+        - ```shell
+          C:\Users\admin>ssh container-12555
+          CreateProcessW failed error:2
+          posix_spawn: No such file or directory
+          ```
+        - Environment: window10 1909, PowerShell or CMD.
+      - Solved:
+        - ```shell
+  
+          Host gpu0
+              HostName 192.168.4.129
+              User user_name
+              Port 22
+          Host container-12555
+              HostName 127.0.0.1
+              Port 12555
+              User root
+              ProxyCommand c:/Windows\System32\OpenSSH/ssh.exe gpu0 -W %h:%p  # The key point.
+              # ProxyJump gpu0
+        ```
   - Docker
     - Run with port forwarding
       ```
