@@ -106,6 +106,7 @@ ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
 -  ``` service ssh reload start status ```
 - add them in .bashrc or .zshrc
 - wsl: enable it to start on boot by running:```sudo update-rc.d ssh defaults```
+- open windows10 port 2222
 - add auto-start in windows10,
   ```kotlin
   @echo off
@@ -116,3 +117,29 @@ ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
   - Press Win + R, type shell:startup, and press Enter to open the Startup folder.
   - Place a shortcut to your batch script in this folder.
 - in your local pc/mac: ```ssh -p wsl_port wsl_user@window10_ip``` or add it in ```~/.ssh/config```
+
+  # Proxy
+  This is for setting remote Linux to use your local proxy
+  - (such as v2rayN clash, check http/socks5 proxy port, v2rayN's default is 10808 for socks5, 10809 for https/http)
+  - Turn on "LAN sharing proxy" of your proxy tool.
+  - Adjust the firewall for your proxy core (such as vwray, xray, shadowsocks ), and open every option.
+  ```bash
+  export hostip=$(ip route | grep default | awk '{print $3}')
+  export hostport=10809
+  alias proxy='
+      export HTTPS_PROXY="https://${hostip}:${hostport}";
+      export HTTP_PROXY="http://${hostip}:${hostport}";
+      export ALL_PROXY="socks5://${hostip}:10808";
+      echo -e "Acquire::http::Proxy \"http://${hostip}:${hostport}\";" | sudo tee -a /etc/apt/apt.conf.d/proxy.conf > /dev/null;
+      echo -e "Acquire::https::Proxy \"http://${hostip}:${hostport}\";" | sudo tee -a /etc/apt/apt.conf.d/proxy.conf > /dev/null;
+  '
+  alias unproxy='
+      unset HTTPS_PROXY;
+      unset HTTP_PROXY;
+      unset ALL_PROXY;
+      sudo sed -i -e '/Acquire::http::Proxy/d' /etc/apt/apt.conf.d/proxy.conf;
+      sudo sed -i -e '/Acquire::https::Proxy/d' /etc/apt/apt.conf.d/proxy.conf;
+  '
+    
+  ```
+  Note: it  works for every LAN device, such as phone, PC, mac. Just add ```http_proxy=proxy_pc_ip:http_proxy_port```
