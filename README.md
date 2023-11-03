@@ -98,3 +98,20 @@ If the firewall banned all port but 22, you could use ```ssh -L``` at cmd/PowerS
 ```
 ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
 ```
+
+# WSL
+- install wsl on your windows10
+- install openssh-server on wsl
+- ssh port:2222 (avoid port conflict), listening_add: 0.0.0.0,  set login in by password and pub key
+-  ``` service ssh reload start status ```
+- add them in .bashrc or .zshrc
+- wsl: enable it to start on boot by running:```sudo update-rc.d ssh defaults```
+- add auto-start in windows10,
+  ```kotlin
+  @echo off
+  netsh interface portproxy add v4tov4 listenaddress=192.168.0.196 listenport=2222 connectaddress=172.30.131.45 connectport=2222
+
+  ```
+  - Save the file with a .bat extension, for example, setup_port_forwarding.bat.
+  - Press Win + R, type shell:startup, and press Enter to open the Startup folder.
+  - Place a shortcut to your batch script in this folder.
