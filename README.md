@@ -115,3 +115,4 @@ ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
   - Save the file with a .bat extension, for example, setup_port_forwarding.bat.
   - Press Win + R, type shell:startup, and press Enter to open the Startup folder.
   - Place a shortcut to your batch script in this folder.
+- in your local pc/mac: ```ssh -p wsl_port wsl_user@window10_ip``` or add it in ```~/.ssh/config```
