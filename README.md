@@ -42,6 +42,8 @@ The introduction for configuring the remote development with Pycharm or VSCode.
     #----------------------
     ```
       - Need upload id_rsa.pub to login01, gpu0 and the container.
+        - Linux & Mac   
+            - ```ssh-copy-id -i ~/.ssh/id_rsa.pub user@host_ip:port```   
   - Login host
     - Support straight connection
   - Computer host
@@ -98,6 +100,53 @@ If the firewall banned all port but 22, you could use ```ssh -L``` at cmd/PowerS
 ```
 ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
 ```
+## Configure 
+- Configure port forward
+  - Add these in your ```~/.ssh/confg```
+  ```
+  # config ssh-public-key firstly
+  Host computer_node
+      HostName ip
+      # Default is 22
+      Port ssh_port 
+      User Username
+  
+  Host jump_node
+      HostName ip
+      # Default is 22
+      Port ssh_port 
+      User Username
+      
+  
+  Host my-jupyter-forward
+      HostName computer_node
+      Port 22
+      User your_username
+      ProxyJump jump_node
+      LocalForward 24000 localhost:24000
+      # This equivalent  -N 
+      RequestTTY no  
+  ```
+  Then, ```ssh my-jupyter-forward``` in your terminal.
+      - For example:
+          ```
+            Host gpu23-tunnel
+              HostName gpu23
+              Port 22
+              User username
+              ProxyJump login02
+              LocalForward 23451 localhost:23451
+              RequestTTY no
+          ```
+
+- Just running
+  -  ```ssh -N -L local_port:localhost:computer_port -J jump_node new_computer_node```.
+  - ```ssh -N -L local_port:localhost:computer_port new_computer_node```.
+    - For example:
+      ```sh
+      ssh -N -L 23451:localhost:23451 -J login02 gpu23
+      ssh -N -L 23451:localhost:23451 gpu22  # Ensure the ProxyJump has been config right
+      ```   
 
 # WSL
 - install wsl on your windows10
