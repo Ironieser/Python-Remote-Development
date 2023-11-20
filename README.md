@@ -110,6 +110,8 @@ ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
 - add auto-start in windows10,
   ```kotlin
   @echo off
+  netsh interface portproxy show all
+  netsh interface portproxy rese
   netsh interface portproxy add v4tov4 listenaddress=192.168.0.196 listenport=2222 connectaddress=172.30.131.45 connectport=2222
 
   ```
