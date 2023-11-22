@@ -44,6 +44,7 @@ The introduction for configuring the remote development with Pycharm or VSCode.
       - Need upload id_rsa.pub to login01, gpu0 and the container.
         - Linux & Mac   
             - ```ssh-copy-id -i ~/.ssh/id_rsa.pub user@host_ip:port```   
+            - ```ssh-copy-id user@host_ip:port```  , if pulic key is in the default folder.
   - Login host
     - Support straight connection
   - Computer host
