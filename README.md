@@ -148,7 +148,7 @@ ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
       ssh -N -L 23451:localhost:23451 -J login02 gpu23
       ssh -N -L 23451:localhost:23451 gpu23  # Ensure the ProxyJump has been config right
       ```   
-  - Optional: -f
+  - Optional: ```-f  -o TCPKeepAlive=yes```
 # WSL
 - install wsl on your windows10
 - install openssh-server on wsl
