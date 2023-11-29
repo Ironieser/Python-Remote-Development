@@ -195,7 +195,13 @@ ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
     
   ```
   Note: it  works for every LAN device, such as phone, PC, mac. Just add ```http_proxy=proxy_pc_ip:http_proxy_port```
-
+  ## Reverse Proxy
+  As above shown, check your proxy software settting and firewall firstly.
+  * Run this in your localhost's terminal to open the SSH Reverse Proxy.    
+  ```ssh -R 10809:127.0.0.1:10809 -p remote_port user@remote_ip```
+  * Run this in your remote host  
+  ```export http_proxy=http://127.0.0.1:10809;export https_proxy=http://127.0.0.1:10809;export ALL_PROXY=socks5://127.0.0.1:10808```
+  
   # Tool
   - Oh-my-zsh
     - wget ```sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"```
