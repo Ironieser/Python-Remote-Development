@@ -203,6 +203,21 @@ ssh -L 8888:localhost:8888 username@compute_node_ip -p 22
   ```export http_proxy=http://127.0.0.1:10809;export https_proxy=http://127.0.0.1:10809;export ALL_PROXY=socks5://127.0.0.1:10808```
   
   # Tool
+  - Conda
+    - ```curl -O https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh```
+    - ```bash ~/Anaconda3-2024.10-1-Linux-x86_64.sh```
+  - Zsh
+    - ```conda install gcc make -c conda-forge```
+    - ```sh
+      wget -O zsh.tar.xz https://sourceforge.net/projects/zsh/files/latest/download
+      mkdir zsh && unxz zsh.tar.xz && tar -xvf zsh.tar -C zsh --strip-components 1
+      cd zsh
+      ./configure --prefix=$HOME
+      make
+      make install
+      ```
+    - Or install by conda ```conda install zsh -c conda-forge```
+    
   - Oh-my-zsh
     - wget ```sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"```
     - curl ```sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"```
